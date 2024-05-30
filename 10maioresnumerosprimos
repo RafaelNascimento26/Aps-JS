@@ -1,0 +1,43 @@
+/**
+Trabalho da Disciplina de Programação de JavaScript
+Turma: 963N
+Aluno: Rafael Nascimento
+Matrícula: 2024100123
+*/
+ 
+
+function NPrimos(num: number): boolean {
+  if (num <= 1) {
+    return false;
+  }
+
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  
+  return true;
+}
+
+function Encontreomaiosmaioresprimos(): void {
+  let inputNum: number = parseInt(prompt("Digite um numero: "));
+  let count: number = 0; 
+  let primeNumbers: number[] = []; 
+
+  for (let num = inputNum; num > 0 && count < 10; num--) {
+    if (NPrimos(num)) {
+      primeNumbers.push(num); 
+      count++; 
+    }
+  }
+  
+  if (count > 0) {
+    console.log("Os 10 maiores números primos a partir de", inputNum, "são:");
+    primeNumbers.reverse().forEach((num) => console.log(num));
+  } else {
+    console.log("Não foram encontrados 10 números primos a partir de", inputNum);
+  }
+}
+
+Encontreomaiosmaioresprimos();
